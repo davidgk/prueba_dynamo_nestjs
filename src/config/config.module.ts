@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { createUser } from '../user/entities/user.model';
 import { UserModule } from '../user/user.module';
-import { createUser } from './db/models/user.model';
 
+console.log('ENVIRONMENT:', process.env.NODE_ENV);
+const ENVIRONMENT = process.env.NODE_ENV || 'dev';
 const configParam = {
-  // TODO: ver de agregar otros ambientes
-  envFilePath: ['.env.dev'],
+  envFilePath: [`.env.${ENVIRONMENT}`],
   isGlobal: true,
 };
 
@@ -14,6 +15,7 @@ const configParam = {
 })
 export class ConfigProjModule {
   constructor() {
+    console.log('Create User schema');
     createUser();
   }
 }

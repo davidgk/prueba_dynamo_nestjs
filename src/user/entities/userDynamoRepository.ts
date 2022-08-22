@@ -7,10 +7,9 @@ import {
   PutCommandInput,
   ScanCommand,
   ScanCommandInput,
-  ServiceOutputTypes
-} from "@aws-sdk/lib-dynamodb";
-import { User } from '../../../user/entities/user.entity';
-import { dbClient } from '../config';
+} from '@aws-sdk/lib-dynamodb';
+import { dbClient } from '../../config/db/config';
+import { User } from './user.entity';
 
 export const getAllUser = async () => {
   const getUserParams: ScanCommandInput = {

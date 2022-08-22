@@ -1,6 +1,6 @@
 import { CreateTableCommand } from '@aws-sdk/client-dynamodb';
 import { CreateTableInput } from '@aws-sdk/client-dynamodb/dist-types/models/models_0';
-import { dbClient } from '../config';
+import { dbClient } from '../../config/db/config';
 
 const userTableParams: CreateTableInput = {
   TableName: 'Users',

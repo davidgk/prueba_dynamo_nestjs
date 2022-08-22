@@ -1,15 +1,14 @@
-import { ServiceOutputTypes } from '@aws-sdk/lib-dynamodb';
 import { Injectable } from '@nestjs/common';
 import { randomUUID } from 'crypto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { User } from './entities/user.entity';
 import {
   deleteUserById,
   getAllUser,
   getUserById,
   putUser,
-} from '../config/db/models/userDynamoRepository';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
+} from './entities/userDynamoRepository';
 
 @Injectable()
 export class UserService {

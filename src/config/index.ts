@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-config({ path: `.env.${process.env.ENV || 'dev'}` });
+config({ path: `.env.${process.env.NODE_ENV || 'dev'}` });
 
 // If .env wasn't provided then exit
 if (!process.env.PORT) {
