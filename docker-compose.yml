@@ -5,16 +5,17 @@ services:
     image: amazon/dynamodb-local:latest
     container_name: dynamodb-local
     ports:
-      - "8000:8000"
+      - "${AWS_DYNAMO_LOCAL_PORT}:${AWS_DYNAMO_LOCAL_PORT}"
+
 
   dynamodb-admin:
     image: aaronshaf/dynamodb-admin
     ports:
-      - "8001:8001"
+      - "${AWS_DYNAMO_ADMIN_PORT}:${AWS_DYNAMO_ADMIN_PORT}"
     environment:
-      DYNAMO_ENDPOINT: "http://dynamodb-local:8000"
-      AWS_REGION: "us-west-2"
-      AWS_ACCESS_KEY_ID: local
-      AWS_SECRET_ACCESS_KEY: local
+      DYNAMO_ENDPOINT: "http://dynamodb-local:${AWS_DYNAMO_LOCAL_PORT}"
+      AWS_REGION: "${AWS_REGION}"
+      AWS_ACCESS_KEY_ID: "${AWS_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET}"
     depends_on:
       - dynamodb-local
