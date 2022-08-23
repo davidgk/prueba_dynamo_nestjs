@@ -1,6 +1,25 @@
 version: '3.7'
 # https://gist.github.com/cmackenzie1/92e0c3628da6842f0e9ffeca8abbe170
 services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION="${AWS_REGION}"
+      - AWS_DEFAULT_REGION="${AWS_REGION}"
+      - HOSTNAME_EXTERNAL=localstack
+      - USE_SSL=false
+      - AWS_ACCESS_KEY_ID= "${AWS_ID}"
+      - AWS_SECRET_ACCESS_KEY= "${AWS_SECRET}"
+      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=1
+    volumes:
+      - "/tmp/localstack:/tmp/localstack"
+      - ./createBucket.sh
+# #!/bin/bash
+# aws --endpoint-url=http://localhost:4566 s3 mb s3://bucket-davidgk
   dynamodb-local:
     image: amazon/dynamodb-local:latest
     container_name: dynamodb-local
