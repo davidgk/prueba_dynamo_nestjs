@@ -1,6 +1,9 @@
 # Prueba Dynamo And S3 Buckets with NestJs
 
 * **develop** branch is for dynamo experience
+* **developS3** branch is for s3 + localstack experience
+
+* **develop** branch is for dynamo experience
 * **developS3** branch Adds s3 + localstack experience
 
 You can use postman APIs to check this using the configuration within **dev_tools** folder
@@ -22,6 +25,7 @@ You can use postman APIs to check this using the configuration within **dev_tool
 * [Post files with postman](https://stackoverflow.com/questions/39037049/how-to-upload-a-file-and-json-data-in-postman)
 * [Upload image to AWS S3 (Localstack) using Nest](https://medium.com/geekculture/upload-image-to-aws-s3-localstack-using-nest-typescript-1104bcb5d9ec)
 * [localStack-A fully functional local cloud stack](https://localstack.cloud/)
+* [Upload image to AWS S3 (Localstack) using Nest](https://medium.com/geekculture/upload-image-to-aws-s3-localstack-using-nest-typescript-1104bcb5d9ec)
 
 # Other sources
 https://docs.aws.amazon.com/general/latest/gr/ddb.html
