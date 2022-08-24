@@ -1,31 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel, Model } from 'nestjs-dynamoose';
 import { Task, TaskKey } from '../../task/models/interfaces/task.interface';
+import { TaskRepository } from '../repositories/task.repository';
 
 @Injectable()
 export class TaskService {
-  constructor(
-    @InjectModel('Task')
-    private taskModel: Model<Task, TaskKey>,
-  ) {}
+  constructor(private readonly taskRepository: TaskRepository) {}
 
   create(task: Task) {
-    return this.taskModel.create(task);
+    return this.taskRepository.create(task);
   }
 
   update(key: TaskKey, task: Task) {
-    return this.taskModel.update(key, task);
+    return this.taskRepository.update(key, task);
   }
 
   findOne(key: TaskKey) {
-    return this.taskModel.get(key);
+    return this.taskRepository.findOne(key);
   }
 
   findAll() {
-    return this.taskModel.scan().exec();
+    return this.taskRepository.findAll();
   }
 
   delete(key: TaskKey) {
-    return this.taskModel.delete(key);
+    return this.taskRepository.delete(key);
+  }
+
+  custom() {
+    return this.taskRepository.custom();
   }
 }

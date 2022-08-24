@@ -19,6 +19,11 @@ export class TaskController {
     return this.taskService.findAll();
   }
 
+  @Get('custom')
+  custom() {
+    return this.taskService.custom();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: TaskKey) {
     return this.taskService.findOne(id);
@@ -26,8 +31,6 @@ export class TaskController {
 
   @Post()
   async create(@Body() task: Task) {
-    console.log(task);
-
     return await this.taskService.create(task);
   }
 

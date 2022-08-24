@@ -3,6 +3,7 @@ import { DynamooseModule } from 'nestjs-dynamoose';
 import { TaskSchema } from './models/schemas/task.schema';
 import { TaskService } from './services/task.service';
 import { TaskController } from './controllers/task.controller';
+import { TaskRepository } from './repositories/task.repository';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { TaskController } from './controllers/task.controller';
       },
     ]),
   ],
-  providers: [TaskService],
+  providers: [TaskService, TaskRepository],
   controllers: [TaskController],
 })
 export class TaskModule {}

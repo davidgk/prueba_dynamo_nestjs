@@ -16,7 +16,7 @@ import { DynamooseModule } from 'nestjs-dynamoose';
         region: 'us-east-1',
       },
       local: true,
-      logger: true,
+      logger: false,
     }),
     UserModule,
     TaskModule,
