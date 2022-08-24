@@ -12,6 +12,7 @@ export const DEV_ENV = process.env.ENV === 'dev';
 export const TESTING_ENV = process.env.ENV === 'test';
 export const CI_ENV = process.env.ENV === 'ci';
 export const JWT_SECRET_DEFAULT = 'some-secret-string-default';
+export const DYNAMO_CONFIG_DB = 'DYNAMO_CONFIG_DB';
 
 export const { ENV, PORT, AWS_ID, AWS_SECRET, AWS_REGION, AWS_ENDPOINT } =
   process.env;
