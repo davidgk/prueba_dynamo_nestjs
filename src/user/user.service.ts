@@ -3,31 +3,28 @@ import { randomUUID } from 'crypto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import {
-  deleteUserById,
-  getAllUser,
-  getUserById,
-  putUser,
-} from './entities/userDynamoRepository';
+import { UserDynamoRepository } from './entities/userDynamoRepository';
 
 @Injectable()
 export class UserService {
+  constructor(private userRepository: UserDynamoRepository) {
+  }
   async create(createUserDto: CreateUserDto) {
     const newUser = new User();
     newUser.id = randomUUID();
     newUser.name = createUserDto.name;
     newUser.age = createUserDto.age;
-    const userCreated = await putUser(newUser);
+    const userCreated = await this.userRepository.putUser(newUser);
     console.log(userCreated);
     return userCreated;
   }
 
   async findAll() {
-    return { users: [...(await getAllUser()).Items] };
+    return { users: [...(await this.userRepository.getAllUser()).Items] };
   }
 
   async findOne(id: string) {
-    return { ...(await getUserById(id)) }.Item;
+    return { ...(await this.userRepository.getUserById(id)) }.Item;
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -35,6 +32,6 @@ export class UserService {
   }
 
   async remove(id: string) {
-    return { ...(await deleteUserById(id)) };
+    return { ...(await this.userRepository.deleteUserById(id)) };
   }
 }

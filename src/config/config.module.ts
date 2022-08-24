@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { dbClient } from './db/config';
+import { ConfigModule } from '@nestjs/config';
 import { createUser } from '../user/entities/user.model';
-import { UserModule } from '../user/user.module';
+import { DYNAMO_CONFIG_DB } from './index';
 
 console.log('ENVIRONMENT:', process.env.NODE_ENV);
 const ENVIRONMENT = process.env.NODE_ENV || 'dev';
@@ -11,7 +12,9 @@ const configParam = {
 };
 
 @Module({
-  imports: [ConfigModule.forRoot(configParam), UserModule],
+  imports: [ConfigModule.forRoot(configParam)],
+  providers: [{ provide: DYNAMO_CONFIG_DB, useValue: dbClient }],
+  exports: [DYNAMO_CONFIG_DB],
 })
 export class ConfigProjModule {
   constructor() {
