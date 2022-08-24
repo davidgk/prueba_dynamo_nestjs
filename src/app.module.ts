@@ -11,9 +11,9 @@ import { DynamooseModule } from 'nestjs-dynamoose';
     ConfigProjModule,
     DynamooseModule.forRoot({
       aws: {
-        accessKeyId: 'local',
-        secretAccessKey: 'locale',
-        region: 'us-east-1',
+        accessKeyId: process.env.AWS_ID,
+        secretAccessKey: process.env.AWS_SECRET,
+        region: process.env.AWS_REGION,
       },
       local: true,
       logger: false,
