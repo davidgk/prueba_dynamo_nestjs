@@ -1,12 +1,20 @@
 import { Module } from '@nestjs/common';
-import { ConfigProjModule } from '../config/config.module';
-import { UserDynamoRepository } from './entities/userDynamoRepository';
-import { UserController } from './user.controller';
-import { UserService } from './user.service';
+import { DynamooseModule } from 'nestjs-dynamoose';
+import { UserController } from './controllers/user.controller';
+import { UserSchema } from './models/schemas/user.schema';
+import { UserRepository } from './repositories/user.repository';
+import { UserService } from './services/user.service';
 
 @Module({
-  imports: [ConfigProjModule],
+  imports: [
+    DynamooseModule.forFeature([
+      {
+        name: 'User',
+        schema: UserSchema,
+      },
+    ]),
+  ],
   controllers: [UserController],
-  providers: [UserService, UserDynamoRepository],
+  providers: [UserService, UserRepository],
 })
 export class UserModule {}
