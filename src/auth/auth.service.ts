@@ -21,10 +21,6 @@ export class AuthService {
     });
   }
 
-  get secretKey() {
-    return this.authConfig.secretKey;
-  }
-
   async register(authRegisterRequest: AuthRegisterDto) {
     const { name, email, password } = authRegisterRequest;
     return new Promise((resolve, reject) => {

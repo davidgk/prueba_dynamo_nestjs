@@ -98,5 +98,6 @@ Both action can be achieved in AWS Cognito Pool Console
 }
 ```
 
-Once it 
+Once it obtained: I should get accesstoken.jwtToken and send into the header 
+token: <jwtToken>
 

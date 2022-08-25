@@ -11,6 +11,7 @@ export class AuthenticationHandler {
   private readonly cognitoIssuer: string;
   private cacheKeys: MapOfKidToPublicKey | undefined;
   private verifyPromised = promisify(jsonwebtoken.verify.bind(jsonwebtoken));
+
   constructor(private configService: ConfigService) {
     this.cognitoPoolId = configService.get<string>('AWS_COGNITO_USER_POOL_ID');
     if (!this.cognitoPoolId) {
@@ -36,8 +37,9 @@ export class AuthenticationHandler {
 
   async handler(request: ClaimVerifyRequest): Promise<ClaimVerifyResult> {
     let result: ClaimVerifyResult;
+    let claim: Claim;
     try {
-      console.log(`user claim verfiy invoked for ${JSON.stringify(request)}`);
+      console.log(`user claim verify invoked for ${JSON.stringify(request)}`);
       const token = request.token;
       const tokenSections = (token || '').split('.');
       if (tokenSections.length < 2) {
@@ -52,7 +54,7 @@ export class AuthenticationHandler {
       if (key === undefined) {
         throw new Error('claim made for unknown kid');
       }
-      const claim = (await this.verifyPromised(token, key.pem)) as Claim;
+      claim = (await this.verifyPromised(token, key.pem)) as Claim;
       const currentSeconds = Math.floor(new Date().valueOf() / 1000);
       if (currentSeconds > claim.exp || currentSeconds < claim.auth_time) {
         throw new Error('claim is expired or invalid');
@@ -60,7 +62,7 @@ export class AuthenticationHandler {
       if (claim.iss !== this.cognitoIssuer) {
         throw new Error('claim issuer is invalid');
       }
-      if (claim.token_use !== 'access') {
+      if (!['access', 'id'].includes(claim.token_use)) {
         throw new Error('claim use is not access');
       }
       console.log(`claim confirmed for ${claim.username}`);
@@ -68,10 +70,17 @@ export class AuthenticationHandler {
         userName: claim.username,
         clientId: claim.client_id,
         isValid: true,
+        others: { ...claim },
       };
     } catch (error) {
       console.error(error);
-      result = { userName: '', clientId: '', error, isValid: false };
+      result = {
+        userName: '',
+        clientId: '',
+        error,
+        isValid: false,
+        others: { ...claim },
+      };
     }
     return result;
   }
@@ -86,6 +95,7 @@ export interface ClaimVerifyResult {
   readonly clientId: string;
   readonly isValid: boolean;
   readonly error?: any;
+  readonly others: any;
 }
 
 interface TokenHeader {
