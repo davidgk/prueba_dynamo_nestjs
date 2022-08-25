@@ -6,7 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "docker:up": "docker-compose --env-file .env.dev up -d",
+    "docker:up": "docker-compose --env-file .env.dev up --no-recreate -d",
+    "docker:down": "docker-compose --env-file .env.dev down",    
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
