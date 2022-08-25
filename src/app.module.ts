@@ -15,7 +15,7 @@ import { DynamooseModule } from 'nestjs-dynamoose';
         secretAccessKey: process.env.AWS_SECRET,
         region: process.env.AWS_REGION,
       },
-      local: true,
+      local: Boolean(process.env.AWS_LOCAL),
       logger: false,
     }),
     UserModule,
