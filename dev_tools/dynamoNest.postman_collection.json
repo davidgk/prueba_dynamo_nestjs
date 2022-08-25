@@ -1,11 +1,249 @@
 {
 	"info": {
-		"_postman_id": "9a4e4bef-3e9d-4995-a8ac-65cbe2b8ec1a",
+		"_postman_id": "a62ae774-2bf4-40f1-b9bb-eff287f3c34e",
 		"name": "dynamoNest",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2202551"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"dfcjk454dfhgvfhbvjkghjk\",\n    \"name\":\"Create\",\n    \"description\":\"Tarea creada desde postman con dynamoose\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/task",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "kdjebffjkgberkgfj",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Creacion de una tarea",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Esta es una descripcion para la tarea que se esta creando",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"3\",\n    \"name\":\"Create 3\",\n    \"description\":\"Tarea creada desde postman con dynamoose\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/task",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "kdjebffjkgberkgfj",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Creacion de una tarea",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Esta es una descripcion para la tarea que se esta creando",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Key",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"3\",\n    \"name\":\"Create 3\",\n    \"description\":\"Tarea creada desde postman con dynamoose\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/task/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"task",
+								"1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "kdjebffjkgberkgfj",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Creacion de una tarea",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Esta es una descripcion para la tarea que se esta creando",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Create 1\",\n    \"description\":\"Tarea creada desde postman con dynamoose y actualizada\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/task/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"task",
+								"1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "kdjebffjkgberkgfj",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Creacion de una tarea",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Esta es una descripcion para la tarea que se esta creando",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"3\",\n    \"name\":\"Create 3\",\n    \"description\":\"Tarea creada desde postman con dynamoose\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3010/task/dfcjk45412121hjhfhgvfhbvjkghjk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3010",
+							"path": [
+								"task",
+								"dfcjk45412121hjhfhgvfhbvjkghjk"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "kdjebffjkgberkgfj",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Creacion de una tarea",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Esta es una descripcion para la tarea que se esta creando",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "createUser",
 			"request": {
