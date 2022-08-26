@@ -11,4 +11,8 @@ export const UserSchema = new Schema({
   description: {
     type: String,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });

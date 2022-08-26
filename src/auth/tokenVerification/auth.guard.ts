@@ -8,11 +8,14 @@ export class AuthenticationGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     try {
+      console.log('-----')
+      console.log(ENV)
+      console.log('-----')
       const requestRaw = context.switchToHttp().getRequest();
       const request = { token: requestRaw.headers.token };
       // Under tests condition avoid situations.
       const result =
-        ENV === 'test'
+        ENV === 'local'
           ? { isValid: true }
           : await this.authHandler.handler(request);
       console.log(result);

@@ -5,7 +5,7 @@ import {
   Body,
   Param,
   Delete,
-  Put, UseGuards
+  Put, UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthenticationGuard } from '../../auth/tokenVerification/auth.guard';

@@ -1,5 +1,6 @@
 export PRJ_HOME="$HOME/development/personal/nest_prjcts/prueba_dynamo_nest_js"
-alias startDkcLocal="dkc --env-file .env.local up -d --no-recreate dynamodb-admin"
+alias startDkcLocal="dkc --env-file .env.local up -d --no-recreate dynamodb-admin-local"
+alias startDkcDev="dkc --env-file .env.dev up -d --no-recreate dynamodb-admin-dev"
 alias stopDkc="dkc --env-file .env.local stop"
 alias debug_local="yarn start:debug:local"
 alias debug_dev="yarn start:debug:dev"
