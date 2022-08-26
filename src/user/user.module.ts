@@ -14,6 +14,7 @@ import { UserService } from './services/user.service';
       },
     ]),
   ],
+  exports: [DynamooseModule],
   controllers: [UserController],
   providers: [UserService, UserRepository],
 })

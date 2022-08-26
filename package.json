@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "docker:up": "docker-compose --env-file .env.dev up --no-recreate -d",
-    "docker:down": "docker-compose --env-file .env.dev down",    
+    "docker:down": "docker-compose --env-file .env.dev down",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -24,6 +24,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@adminjs/express": "^5.0.0",
+    "@adminjs/mongoose": "^3.0.0",
+    "@adminjs/nestjs": "^5.0.1",
     "@aws-sdk/client-dynamodb": "^3.154.0",
     "@aws-sdk/lib-dynamodb": "^3.154.0",
     "@aws-sdk/smithy-client": "^3.142.0",
@@ -33,7 +36,11 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "adminjs": "^6.1.4",
     "dynamoose": "^2.2.0",
+    "express": "^4.18.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.3",
     "nestjs-dynamoose": "^0.4.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
