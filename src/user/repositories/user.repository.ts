@@ -9,12 +9,12 @@ export class UserRepository {
     private userModel: Model<User, UserKey>,
   ) {}
 
-  create(task: User) {
-    return this.userModel.create(task);
+  create(user: User) {
+    return this.userModel.create(user);
   }
 
-  update(key: UserKey, task: User) {
-    return this.userModel.update(key, task);
+  update(key: UserKey, user: User) {
+    return this.userModel.update(key, user);
   }
 
   findOne(key: UserKey) {
