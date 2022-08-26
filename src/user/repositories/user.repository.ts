@@ -5,7 +5,7 @@ import { User, UserKey } from '../models/interfaces/user.interface';
 @Injectable()
 export class UserRepository {
   constructor(
-    @InjectModel('User')
+    @InjectModel('Users')
     private userModel: Model<User, UserKey>,
   ) {}
 

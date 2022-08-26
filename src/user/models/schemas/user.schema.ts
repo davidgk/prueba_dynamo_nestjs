@@ -12,3 +12,5 @@ export const UserSchema = new Schema({
     type: String,
   },
 });
+
+export const UserModel = { name: 'Users', schema: UserSchema };
