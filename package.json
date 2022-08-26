@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "docker:up": "docker-compose --env-file .env.dev up --no-recreate -d",
+    "docker:stop": "docker-compose --env-file .env.dev stop",    
     "docker:down": "docker-compose --env-file .env.dev down",    
     "prebuild": "rimraf dist",
     "build": "nest build",
