@@ -7,9 +7,11 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Task, TaskKey } from '../models/interfaces/task.interface';
 import { TaskService } from '../services/task.service';
 
+@ApiTags('task')
 @Controller('task')
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
