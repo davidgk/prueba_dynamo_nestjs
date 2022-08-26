@@ -4,7 +4,7 @@ import { DynamooseModule } from 'nestjs-dynamoose';
 import { DynamooseConfigService } from './services/orm-config.service';
 
 console.log('ENVIRONMENT:', process.env.NODE_ENV);
-const ENVIRONMENT = process.env.NODE_ENV || 'dev';
+const ENVIRONMENT = process.env.NODE_ENV || 'local';
 const configParam = {
   envFilePath: [`.env.${ENVIRONMENT}`],
   isGlobal: true,

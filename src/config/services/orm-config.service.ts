@@ -9,7 +9,9 @@ import {
 export class DynamooseConfigService implements DynamooseOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
   createDynamooseOptions(): DynamooseModuleOptions {
-    const IS_DEV: boolean = this.configService.get('NODE_ENV') === 'dev';
+    const IS_DEV: boolean = ['local', 'test'].includes(
+      this.configService.get('NODE_ENV'),
+    );
     return {
       aws: {
         accessKeyId: this.configService.get('AWS_ID'),

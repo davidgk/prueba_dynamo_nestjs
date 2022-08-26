@@ -5,6 +5,10 @@
 
 You can use postman APIs to check this using the configuration within **dev_tools** folder
 
+## Requirements
+* Install docker, docker-compose, yarn , aws-cli
+* Create based on .example.env .env.local, .env.dev ( with remote devs confs) 
+
 ## POC using Dynamo Db with docker-compose.
 * Crud users with cx to local and remote Aws
 * Contains postman to do some tests.
