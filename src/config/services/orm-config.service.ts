@@ -9,15 +9,19 @@ import {
 export class DynamooseConfigService implements DynamooseOptionsFactory {
   constructor(private readonly configService: ConfigService) {}
   createDynamooseOptions(): DynamooseModuleOptions {
-    const NODE_ENV: boolean = this.configService.get('NODE_ENV') === 'dev';
+    const IS_DEV: boolean = this.configService.get('NODE_ENV') === 'dev';
     return {
       aws: {
         accessKeyId: this.configService.get('AWS_ID'),
         secretAccessKey: this.configService.get('AWS_SECRET'),
         region: this.configService.get('AWS_REGION'),
       },
-      local: NODE_ENV,
-      logger: NODE_ENV,
+      model: {
+        // This configuration is recommended to disable in productive environments
+        create: IS_DEV,
+      },
+      local: IS_DEV,
+      logger: IS_DEV,
     };
   }
 }
