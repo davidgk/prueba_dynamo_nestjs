@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { User, UserKey } from '../models/interfaces/user.interface';
 import { UserRepository } from '../repositories/user.repository';
 
@@ -7,7 +8,7 @@ export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
 
   create(user: User) {
-    return this.userRepository.create(user);
+    return this.userRepository.create({ ...user, id: randomUUID() });
   }
 
   update(key: UserKey, user: User) {
