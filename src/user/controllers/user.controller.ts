@@ -5,10 +5,9 @@ import {
   Body,
   Param,
   Delete,
-  Put, UseGuards,
+  Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { AuthenticationGuard } from '../../auth/tokenVerification/auth.guard';
 import { User, UserKey } from '../models/interfaces/user.interface';
 import { UserService } from '../services/user.service';
 
@@ -28,7 +27,6 @@ export class UserController {
   }
 
   @Post()
-  @UseGuards(AuthenticationGuard)
   async create(@Body() user: User) {
     return await this.userService.create(user);
   }

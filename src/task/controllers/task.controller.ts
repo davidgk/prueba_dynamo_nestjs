@@ -5,10 +5,9 @@ import {
   Get,
   Param,
   Post,
-  Put, UseGuards
+  Put,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { AuthenticationGuard } from '../../auth/tokenVerification/auth.guard';
 import { Task, TaskKey } from '../models/interfaces/task.interface';
 import { TaskService } from '../services/task.service';
 
@@ -33,7 +32,6 @@ export class TaskController {
   }
 
   @Post()
-  @UseGuards(AuthenticationGuard)
   async create(@Body() task: Task) {
     return await this.taskService.create(task);
   }
