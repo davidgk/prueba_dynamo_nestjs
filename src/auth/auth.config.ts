@@ -1,9 +1,15 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthConfig {
-  public userPoolId = 'us-east-1_l7OfUeCNK';
-  public clientId = '20mous2beblg46arhu9k3a8dil';
-  public region = 'us-east-1';
-  public authority = `https://cognito-idp.${this.region}.amazonaws.com/${this.userPoolId}`;
+  UserPoolId: string;
+  ClientId: string;
+  secretKey: string;
+
+  constructor(private configService: ConfigService) {
+    this.UserPoolId = configService.get<string>('AWS_COGNITO_USER_POOL_ID');
+    this.ClientId = configService.get<string>('AWS_COGNITO_CONFIG_ID');
+    this.secretKey = configService.get<string>('AWS_SECRET_KEY');
+  }
 }
