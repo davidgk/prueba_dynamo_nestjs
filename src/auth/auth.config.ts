@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AuthConfig {
-  public userPoolId = 'us-east-1_l7OfUeCNK';
-  public clientId = '20mous2beblg46arhu9k3a8dil';
-  public region = 'us-east-1';
+  public userPoolId = process.env.COGNITO_USER_POOL_ID;
+  public clientId = process.env.COGNITO_CLIENT_ID;
+  public region = process.env.COGNITO_REGION;
   public authority = `https://cognito-idp.${this.region}.amazonaws.com/${this.userPoolId}`;
 }
